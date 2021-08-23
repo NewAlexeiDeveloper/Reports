@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="https://images.pexels.com/photos/262508/pexels-photo-262508.jpeg">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+    <script type="module" src="main.js" defer></script>
+    <title>Reports</title>
+</head>
+
+<body>
+
+    <header class="info bg-dark text-white">
+        <div class="container-fluid">
+            <ul class="d-flex justify-content-end list-unstyled mb-0">
+                <select disabled class="form-select bg-secondary"
+                    style="width: 130px; border: none; margin-right: 10px; display: none;" id="table_select_text_align">
+                    <option selected value="no_value">Text align</option>
+                    <option value="text-start">Left</option>
+                    <option value="text-center">Center</option>
+                    <option value="text-end">Right</option>
+                </select>
+                <select disabled class="form-select bg-secondary"
+                    style="width: 130px; border: none; margin-right: 10px; display: none;" id="table_select_text_color">
+                    <option selected value="no_value">Text color</option>
+                    <option value="text-primary">Indigo</option>
+                    <option value="text-secondary">Grey</option>
+                    <option value="text-success">Green</option>
+                    <option value="text-danger">Red</option>
+                    <option value="text-warning">Yellow</option>
+                    <option value="text-info">Blue</option>
+                    <option value="text-light">Light</option>
+                    <option value="text-dark">Dark</option>
+                </select>
+                <!-- Button trigger modal
+                <button type="button" class="btn btn-dark text-white" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal">
+                    Save
+                </button> -->
+                <!-- Modal -->
+                <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title text-dark">Report name</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body" style="margin-bottom: 4rem;">
+                                <input type="text" id="save_title" class="form-control"
+                                    style="position: absolute; top: 0; left: 0;" placeholder="title">
+                                <input type="text" id="description_title" class="form-control"
+                                    style="position: absolute; top: 3rem; left: 0;" placeholder="decription(optional)">
+                            </div>
+                            <div class="modal-footer">
+                                <div class="alert alert-success" role="alert" style="display: none;"
+                                    id="alert_for_save">
+                                    A simple success alert—check it out!
+                                </div>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary" id="save_done">Done</button>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                <!-- Button trigger modal -->
+                <!-- <button type="button" class="btn btn-dark text-white" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal1">
+                    Your reports
+                </button> -->
+                <!-- Modal -->
+                <!-- <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title text-dark">List of reports</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body text-dark">
+                                <dl id="dl">
+                                </dl>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+            </ul>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="row m-0">
+            <div class="col-3 template flex-column align-items-center" style="height: 100vh">
+                <header class="text-center mb-4">Select a report type</header>
+                <figure class="circle mb-4 mx-auto">
+                    <button id="circle_diagram"></button>
+                </figure>
+                <figure class="d-flex align-items-center justify-content-center chart-div mx-auto mb-4">
+                    <button class="chart" id="chart_diagram">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="27vmin" height="27vmin" fill="currentColor"
+                            class="bi bi-graph-up" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M0 0h1v15h15v1H0V0zm10 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4.9l-3.613 4.417a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61L13.445 4H10.5a.5.5 0 0 1-.5-.5z" />
+                        </svg>
+                    </button>
+                </figure>
+                <figure class="d-flex align-items-center justify-content-center table-div mx-auto">
+                    <button class="table-button" id="table_diagram">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="27vmin" height="27vmin" fill="currentColor"
+                            class="bi bi-table" viewBox="0 0 16 16">
+                            <path
+                                d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm15 2h-4v3h4V4zm0 4h-4v3h4V8zm0 4h-4v3h3a1 1 0 0 0 1-1v-2zm-5 3v-3H6v3h4zm-5 0v-3H1v2a1 1 0 0 0 1 1h3zm-4-4h4V8H1v3zm0-4h4V4H1v3zm5-3v3h4V4H6zm4 4H6v3h4V8z" />
+                        </svg>
+                    </button>
+                </figure>
+            </div>
+
+
+            <div class="col-9 dashboard" style="height: 100vh">
+                <!-- Circle diagram -->
+                <div class="circle_div_to_hide_content">
+                    <div class="circle_chart_container mb-3">
+                        <canvas class="container" id="canvas_circle" width="100px"></canvas>
+                    </div>
+                    <table class="table table-bordered border-primary text-center">
+                        <thead class="align-middle">
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Color</th>
+                                <th scope="col">Value</th>
+                                <th scope="col">Add/Update or Remove</th>
+                            </tr>
+                        </thead>
+                        <tbody id="circle_tbody">
+                            <tr id="circle_row_0">
+                                <td scope="row">
+                                    <input type="text" class="form-control" id="circle_name_0">
+                                </td>
+                                <td scope="row">
+                                    <input type="color" class="form-control-color" id="circle_color_0">
+                                </td>
+                                <td scope="row">
+                                    <input type="number" class="form-control" id="circle_value_0">
+                                </td>
+                                <td scope="row">
+                                    <button type="button" class="btn btn-success circle_add_row">Add</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-primary" type="button" id="circle_add_row_btn">New row</button>
+                    </div>
+                </div>
+                <!-- Circle diagram -->
+
+                <!-- Line diagram -->
+                <div class="line_div_to_hide_content">
+                    <div class="line_chart_container mb-3">
+                        <canvas class="container" id="canvas_line"></canvas>
+                    </div>
+                    <!-- table to input data -->
+                    <table class="table table-dark table-hover mb-1">
+                        <thead>
+                            <tr>
+                                <th scope="col">Data</th>
+                                <th scope="col">Input</th>
+                            </tr>
+                        </thead>
+                        <tbody id="line_tbody">
+                            <tr>
+                                <td>Name of the chart</td>
+                                <td><input type="text" class="form-control" id="name_of_chart"></td>
+                            </tr>
+                            <tr>
+                                <td>X axis (comma separated)</td>
+                                <td><input type="text" class="form-control" id="x_axis"></td>
+                            </tr>
+                            <tr>
+                                <td>Y axis (numbers; comma separated)</td>
+                                <td><input type="text" class="form-control" id="y_axis"></td>
+                            </tr>
+                            <tr>
+                                <td>Color of dots</td>
+                                <td class="text-center"><input type="color" class="form-control-color" id="dot_color">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Color of the line</td>
+                                <td class="text-center"><input type="color" class="form-control-color" id="line_color">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Dashed line?</td>
+                                <td>
+                                    <select class="form-control" id="dashed_line">
+                                        <option value="no" selected>False</option>
+                                        <option value="yes">True</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-primary" type="button" id="create_chart_button">Create the chart</button>
+                    </div>
+                </div>
+                <!-- Line diagram -->
+
+                <!-- Table diagram -->
+                <div class="table_div_to_hide_content">
+                    <table class="table table-bordered border-primary table-dark">
+                        <thead>
+                            <tr id="row_1">
+                                <th scope="col">
+                                    <input type="text" class="form-control text-danger text-start"
+                                        placeholder="Type a header" id="1_1">
+                                </th>
+                                <th scope="col">
+                                    <input type="text" class="form-control text-danger text-start"
+                                        placeholder="Type a header" id="1_2">
+                                </th>
+                                <th scope="col">
+                                    <input type="text" class="form-control text-danger text-start"
+                                        placeholder="Type a header" id="1_3">
+                                </th>
+                                <th scope="col">
+                                    <input type="text" class="form-control text-danger text-start"
+                                        placeholder="Type a header" id="1_4">
+                                </th>
+                                <th scope="col" style="width: 140px" class="align-middle text-center">Add/Remove column
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr id="row_2">
+                                <td>
+                                    <input type="text" class="form-control text-warning text-start" id="2_1">
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control text-warning text-start" id="2_2">
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control text-warning text-start" id="2_3">
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control text-warning text-start" id="2_4">
+                                </td>
+                                <td class="text-center position-relative">
+                                    <button class="btn btn-info position-absolute table_add_column"
+                                        style="width: 50%; height: 100%; top: 0; left: 0; border-radius: 0;">+
+                                    </button>
+                                    <button class="btn btn-danger position-absolute table_delete_column"
+                                        style="width: 50%; height: 100%; top: 0; left: 50%; border-radius: 0;">-
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr id="row_3">
+                                <td><input type="text" class="form-control text-warning text-start" id="3_1"></td>
+                                <td><input type="text" class="form-control text-warning text-start" id="3_2"></td>
+                                <td><input type="text" class="form-control text-warning text-start" id="3_3"></td>
+                                <td><input type="text" class="form-control text-warning text-start" id="3_4"></td>
+                                <td class="text-center position-relative">
+                                    <button class="btn btn-info position-absolute table_add_column"
+                                        style="width: 50%; height: 100%; top: 0; left: 0; border-radius: 0;">+
+                                    </button>
+                                    <button class="btn btn-danger position-absolute table_delete_column"
+                                        style="width: 50%; height: 100%; top: 0; left: 50%; border-radius: 0;">-
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="align-middle text-center fw-bold">New row</td>
+                                <td colspan="4" class="text-center position-relative" id="table_td_colspan">
+                                    <button
+                                        class="btn btn-info position-absolute d-flex align-items-center justify-content-center table_create_row"
+                                        style="width: 100%; height: 50%; top: 0; left: 0; border-radius: 0;">Create a
+                                        row
+                                    </button>
+                                    <button
+                                        class="btn btn-danger position-absolute d-flex align-items-center justify-content-center table_delete_row"
+                                        style="width: 100%; height: 50%; top: 50%; left: 0; border-radius: 0;">Delete a
+                                        row
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- Table diagram -->
+            </div>
+
+        </div>
+    </main>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>
